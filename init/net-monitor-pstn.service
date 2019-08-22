@@ -1,0 +1,11 @@
+Description=net-monitor-pstn
+After=network.target
+
+[Service]
+ExecStart=/sbin/start-stop-daemon --start --pidfile /var/run/net-monitor-pstn.pid --make-pidfile --exec /opt/net-monitor/net-monitor-pstn.sh -b --chuid net-monitor
+ExecStop=/sbin/start-stop-daemon --stop --pidfile /var/run/net-monitor-pstn.pid --remove-pidfile
+Type=forking
+PIDFile=/var/run/net-monitor-pstn.pid
+
+[Install]
+WantedBy=multi-user.target

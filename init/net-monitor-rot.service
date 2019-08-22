@@ -1,0 +1,11 @@
+Description=net-monitor-rot
+After=network.target
+
+[Service]
+ExecStart=/sbin/start-stop-daemon --start --pidfile /var/run/net-monitor-rot.pid --make-pidfile --exec /opt/net-monitor/net-monitor-rot.sh -b --chuid net-monitor
+ExecStop=/sbin/start-stop-daemon --stop --pidfile /var/run/net-monitor-rot.pid --remove-pidfile
+Type=forking
+PIDFile=/var/run/net-monitor-rot.pid
+
+[Install]
+WantedBy=multi-user.target

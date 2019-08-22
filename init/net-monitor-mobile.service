@@ -1,0 +1,11 @@
+Description=net-monitor-mobile
+After=network.target
+
+[Service]
+ExecStart=/sbin/start-stop-daemon --start --pidfile /var/run/net-monitor-mobile.pid --make-pidfile --exec /opt/net-monitor/net-monitor-mobile.sh -b --chuid net-monitor
+ExecStop=/sbin/start-stop-daemon --stop --pidfile /var/run/net-monitor-mobile.pid --remove-pidfile
+Type=forking
+PIDFile=/var/run/net-monitor-mobile.pid
+
+[Install]
+WantedBy=multi-user.target
